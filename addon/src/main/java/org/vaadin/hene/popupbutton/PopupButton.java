@@ -144,9 +144,10 @@ public class PopupButton extends Button implements SingleComponentContainer {
 
     /**
      * Sets opening direction for the popup. At the moment only support values are
-     * {@link com.vaadin.ui.Alignment#BOTTOM_LEFT} and {@link com.vaadin.ui.Alignment#BOTTOM_CENTER}.
+     * {@link com.vaadin.ui.Alignment#BOTTOM_LEFT}, {@link com.vaadin.ui.Alignment#BOTTOM_CENTER} and
+     * {@link com.vaadin.ui.Alignment#BOTTOM_RIGHT}.
      *
-     * Default is {@link com.vaadin.ui.Alignment#BOTTOM_LEFT}.
+     * Default is {@link com.vaadin.ui.Alignment#BOTTOM_RIGHT}.
      */
     public void setDirection(final Alignment direction) {
         if (direction == null) {

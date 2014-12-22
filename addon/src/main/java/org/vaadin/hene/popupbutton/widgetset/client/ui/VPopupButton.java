@@ -70,6 +70,8 @@ public class VPopupButton extends VButton {
                     int left = getPopupPositionWidget().getAbsoluteLeft();
                     if (direction.isHorizontalCenter()) {
                         left -= (popup.getOffsetWidth() - getPopupPositionWidget().getOffsetWidth()) / 2;
+                    } else if (direction.isLeft()) {
+                        left -= popup.getOffsetWidth() - getPopupPositionWidget().getOffsetWidth();
                     }
                     int top = getPopupPositionWidget().getAbsoluteTop()
                             + getPopupPositionWidget().getOffsetHeight();
@@ -290,8 +292,14 @@ public class VPopupButton extends VButton {
 
         if (isOverlay) {
             while (element != null) {
-                if (element.getClassName().contains("v-window")) {
-                    return false;
+                try {
+                    if (element.getClassName().contains("v-window")) {
+                        return false;
+                    }
+                } catch (Exception e) {
+                    // If the popup contains an svg element, an exception will
+                    // be thrown when then element is clicked because the type
+                    // of className attribute in an SVG element is not String
                 }
                 element = element.getParentElement();
             }
